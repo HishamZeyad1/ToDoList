@@ -4,6 +4,18 @@
     <string name="things_to_do">Things To Do</string>
     <string name="todo">TODO</string>
     <string name="next"><u>next</u></string>
+    <string name="sign_up_screen">Sign Up Screen</string>
+    <string name="create_profile_to_start_your_first_todo_list">Create profile to start your first ToDo List</string>
+    <string name="name">Name</string>
+    <string name="your_email_address">Your Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="create_your_profile">Create Your Profile</string>
+    <string name="forget_your_password">Forget Your Password?</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="button">Button</string>
+    <string name="log_in">Log in</string>
 
 
 </resources>
