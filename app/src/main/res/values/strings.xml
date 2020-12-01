@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+
+    <string name="things_to_do">Things To Do</string>
+    <string name="todo">TODO</string>
+    <string name="next"><u>next</u></string>
+
+
+</resources>
