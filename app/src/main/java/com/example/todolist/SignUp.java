@@ -20,7 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity {
 
-    TextView login,signup;
+    TextView login,haveAccount;
+    TextView signup;
     EditText email,password;
     private FirebaseAuth mAuth;
     @Override
@@ -36,8 +37,8 @@ public class SignUp extends AppCompatActivity {
         password = findViewById(R.id.password);
         signup = findViewById(R.id.signup);
 
-        login=(TextView)findViewById(R.id.haveAccount);
-        login.setOnClickListener(new View.OnClickListener() {
+        haveAccount=(TextView)findViewById(R.id.haveAccount);
+        haveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
