@@ -23,6 +23,7 @@ public class SignUp extends AppCompatActivity {
     TextView login,haveAccount;
     TextView signup;
     EditText email,password;
+
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +38,22 @@ public class SignUp extends AppCompatActivity {
         password = findViewById(R.id.password);
         signup = findViewById(R.id.signup);
 
-        haveAccount=(TextView)findViewById(R.id.haveAccount);
-        haveAccount.setOnClickListener(new View.OnClickListener() {
+        login = (TextView) findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignUp.this, Login.class);
                 startActivity(intent);
             }
         });
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SignUp.this.SignUp(email.getText().toString(), password.getText().toString());
+//                for (int i=0;i<300;++i){}
+//                Intent intent = new Intent(SignUp.this, Login.class);
+//                startActivity(intent);
             }
         });
         }
@@ -61,7 +66,16 @@ public class SignUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(SignUp.this, "Done Sucessfully",
-                                        Toast.LENGTH_SHORT).show();                            }
+                                        Toast.LENGTH_LONG).show();
+
+//                                            for (int i=0;i<500;){i+=1;}
+//                                     Intent intent = new Intent(SignUp.this, Login.class);
+//                                        startActivity(intent);
+                            }
+                            else {
+                            Toast.makeText(SignUp.this, "Authentication failed.",
+                            Toast.LENGTH_LONG).show();
+                            }
                             // ...
                         }
                     });

@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     private TextView toSignUp;
-    private TextView no ;
+    private TextView create_account ;
 
     TextView signuptv;
     EditText email,password;
@@ -34,23 +34,25 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email);
         password= findViewById(R.id.password);
         login = findViewById(R.id.login);
-        no.setOnClickListener(new View.OnClickListener() {
+
+        create_account = findViewById(R.id.create_account);
+
+        create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-            }
-        });
+                finish();}});
+//
+
+
 
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login.this.doSignIn(email.getText().toString(), password.getText().toString());
+                Login.this.Login(email.getText().toString(), password.getText().toString());
             }
-        });
-
-    }
-    private void doSignIn(String email, String password) {
+        });}
+    private void Login(String email, String password) {
     mAuth.signInWithEmailAndPassword(email, password)
         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -58,8 +60,7 @@ public class Login extends AppCompatActivity {
 
 
                 if (task.isSuccessful()) {
-
-                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    Intent intent = new Intent(Login.this, TaskActivity.class);
                     startActivity(intent);
     //
                 } else {

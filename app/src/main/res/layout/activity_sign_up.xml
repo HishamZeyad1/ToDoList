@@ -8,7 +8,7 @@
     tools:context=".SignUp">
 
     <TextView
-        android:id="@+id/forget"
+        android:id="@+id/createProfile"
         android:layout_width="277dp"
         android:layout_height="102dp"
         android:layout_marginTop="84dp"
@@ -39,7 +39,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forget" />
+        app:layout_constraintTop_toBottomOf="@+id/createProfile" />
 
     <EditText
         android:id="@+id/password"
@@ -88,11 +88,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="38dp"
+
         android:background="@drawable/button_background"
+        android:gravity="center"
+        android:hapticFeedbackEnabled="true"
+        android:text="Create your profile"
+
         android:clickable="true"
         android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="Create your profile"
+
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
@@ -102,11 +106,14 @@
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
 
+
+
     <TextView
         android:id="@+id/haveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
+        android:clickable="true"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:text="Already have an account?"

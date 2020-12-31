@@ -1,4 +1,4 @@
-<LinearLayout
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -25,14 +25,52 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35sp"
         android:layout_gravity="center"
-        android:text="My Tasks"/>
+        android:background="#3F51B5"
+        android:clickable="true"
+        android:text="My Tasks"
+        android:textSize="35sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks_rv"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="168dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" />
+
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="131dp">
+
+        <Button
+            android:id="@+id/button_x"
+            android:layout_width="389dp"
+            android:layout_height="141dp"
+            android:background="@null"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/button_background"
+            app:backgroundTint="@android:color/holo_orange_dark"></Button>
+
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center"
+            android:background="#CB2121"
+            android:clickable="false"
+            android:text="TEST TEST"
+            android:textColor="#3F51B5"
+            app:drawableTint="#673AB7"></TextView>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
 
 </LinearLayout>
