@@ -33,6 +33,8 @@ public class TaskSearchAdapter extends RecyclerView.Adapter<TaskSearchAdapter.se
         this.activity = activity;
         this.data = data;
         this.listsRef = listsRef;
+        //*****************************************************
+        //**************************************************
     }
 
     @NonNull
