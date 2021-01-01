@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme"
-    tools:context=".ListActivity">
+    tools:context=".ListsActivity">
 
     <LinearLayout
         android:id="@+id/linear_header"
@@ -108,7 +108,7 @@
         android:drawableLeft="@drawable/ic_add" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+        android:id="@+id/lists_rv"
         android:layout_width="358dp"
         android:layout_height="529dp"
         android:layout_marginHorizontal="18dp"
@@ -119,5 +119,16 @@
         app:layout_constraintTop_toBottomOf="@+id/listCreate"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="22dp" />
+    <ProgressBar
+        android:id="@+id/pc_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCreate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,10 @@
 package com.example.todolist;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.todolist.R;
-import com.example.todolist.TaskAdapterEx;
-import com.example.todolist.TaskItem;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -23,6 +23,9 @@ public class TaskAdapterEx extends RecyclerView.Adapter<TaskAdapterEx.TaskVh> {
         this.context = context;
         this.tasks = tasks;
     }
+
+
+
     @Override
     public int getItemCount() {
         return tasks.size();

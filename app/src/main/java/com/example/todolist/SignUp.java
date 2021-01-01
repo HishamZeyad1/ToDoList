@@ -56,36 +56,40 @@ public class SignUp extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.print("************************************");
+//                System.out.print(email.getText().toString());
+//                System.out.print(password.getText().toString());
+                Log.d(email.getText().toString(), password.getText().toString());
+
                 SignUp.this.SignUp(email.getText().toString(), password.getText().toString());
-//                for (int i=0;i<300;++i){}
-//                Intent intent = new Intent(SignUp.this, Login.class);
-//                startActivity(intent);
+
+
             }
         });
-        }
+    }
 
 
-        private  void SignUp(String email,String password){
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(SignUp.this, "Done Sucessfully",
-                                        Toast.LENGTH_LONG).show();
+    private  void SignUp(String email,String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUp.this, "Done Sucessfully",
+                                    Toast.LENGTH_LONG).show();
 
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        String uid = user.getUid();
-                        Map<String,Object> data = new HashMap<>();
-                        data.put("uid",uid);
-                        FirebaseDatabase.getInstance().getReference("Users").child(uid).setValue(data)
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(SignUp.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                                    Log.d("error",e.getLocalizedMessage());
-                                }
-                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            String uid = user.getUid();
+                            Map<String,Object> data = new HashMap<>();
+                            data.put("uid",uid);
+                            FirebaseDatabase.getInstance().getReference("Users").child(uid).setValue(data)
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(SignUp.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                            Log.d("error",e.getLocalizedMessage());
+                                        }
+                                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Intent intent = new Intent(SignUp.this, Login.class);
@@ -94,14 +98,14 @@ public class SignUp extends AppCompatActivity {
                             });
 
 
-                            }
-                            else {
-                            Toast.makeText(SignUp.this, "Authentication failed.",
-                            Toast.LENGTH_LONG).show();
-                            }
                         }
-                    });
-        }
+                        else {
+                            Toast.makeText(SignUp.this, "Authentication failed.",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
 
 
 }
