@@ -25,13 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.example.todolist.ListsRecyclerAdapter;
 //import com.lab.todolist.Adapters.TaskSearchAdapter;
-import com.example.todolist.TODOList;
-import com.example.todolist.TODOTask;
 //import com.example.todolist.TODOTaskSearch;
-import com.example.todolist.Helpers;
-import com.example.todolist.ListPaddingDecoration;
 
 import java.util.ArrayList;
 
@@ -71,7 +66,7 @@ public class ListsActivity1 extends AppCompatActivity {
         listsRecyclerAdapter = new ListsRecyclerAdapter(ListsActivity1.this, lists);
         listRecycler.setAdapter(listsRecyclerAdapter);
 
-        et_list_create = findViewById(R.id.listCreate);
+        et_list_create = findViewById(R.id.TaskCreate);
 
         et_list_create.setOnEditorActionListener((view, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_SEND) || (actionId == EditorInfo.IME_ACTION_DONE)) {

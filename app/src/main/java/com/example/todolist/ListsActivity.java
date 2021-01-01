@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListsActivity extends AppCompatActivity {
     TextView logout;
@@ -66,7 +65,7 @@ public class ListsActivity extends AppCompatActivity {
         listsRecyclerAdapter = new ListsRecyclerAdapter((Activity) ListsActivity.this, Lists);
         lists_rv.setAdapter(listsRecyclerAdapter);
 
-        listCreate = findViewById(R.id.listCreate);
+        listCreate = findViewById(R.id.TaskCreate);
 //        listCreate.setOnEditorActionListener((view, actionId, event) -> {
 //            mAuth = FirebaseAuth.getInstance();
 //            FirebaseUser user = mAuth.getCurrentUser();
