@@ -47,7 +47,7 @@ public class ViewtaskActivity extends AppCompatActivity {
         et_task_title = findViewById(R.id.task_title);
         et_task_description = findViewById(R.id.task_description);
         tv_task_date = findViewById(R.id.task_date);
-        tv_list_title = findViewById(R.id.tv_list_title);
+        tv_list_title = findViewById(R.id.list_title);
         pc_loading = findViewById(R.id.pc_loading);
 
         updateUI(task);

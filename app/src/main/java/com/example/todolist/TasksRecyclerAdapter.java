@@ -42,7 +42,6 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         return new TODOTaskViewHolder(root);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull TODOTaskViewHolder holder, int position) {
         TODOTask task = data.getTasks().get(position);
@@ -50,17 +49,27 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         holder.cb_task_check.setChecked(task.isChecked());
 
         if(task.isChecked()){
-            holder.tv_task_title.setTextColor(activity.getColor(R.color.check_text));
-            holder.tv_task_title.setBackground(activity.getDrawable(R.drawable.checket_text_line));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.tv_task_title.setTextColor(activity.getColor(R.color.check_text));
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                holder.tv_task_title.setBackground(activity.getDrawable(R.drawable.checket_text_line));
+            }
         }
 
         holder.cb_task_check.setOnCheckedChangeListener((buttonView, isChecked) -> {
             listRef.child("tasks").child(task.getId()).child("checked").setValue(isChecked);
             if(isChecked){
-                holder.tv_task_title.setTextColor(activity.getColor(R.color.check_text));
-                holder.tv_task_title.setBackground(activity.getDrawable(R.drawable.checket_text_line));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.tv_task_title.setTextColor(activity.getColor(R.color.check_text));
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    holder.tv_task_title.setBackground(activity.getDrawable(R.drawable.checket_text_line));
+                }
             } else {
-                holder.tv_task_title.setTextColor(activity.getColor(R.color.uncheck_text));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.tv_task_title.setTextColor(activity.getColor(R.color.uncheck_text));
+                }
                 holder.tv_task_title.setBackground(null);
             }
         });

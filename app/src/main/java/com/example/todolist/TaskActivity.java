@@ -29,7 +29,7 @@ import java.util.List;
 
 public class TaskActivity extends AppCompatActivity {
     RecyclerView tasks_rv;
-    TaskAdapterEx taskAdapter;
+//    TaskAdapterEx taskAdapter;
     static List<TaskItem> tasksList = new ArrayList<>();
     EditText listCreate;
     TextView listTitle;
@@ -43,7 +43,7 @@ public class TaskActivity extends AppCompatActivity {
     String uid;
     ProgressBar pc_loading;
     TextView tv_delete_list,TaskCreate;
-
+    String titleText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,17 +69,19 @@ public class TaskActivity extends AppCompatActivity {
         tasksRecyclerAdapter = new TasksRecyclerAdapter(TaskActivity.this, todoList, listRef);
         taskRecycler.setAdapter(tasksRecyclerAdapter);
 
-         TaskCreate = findViewById(R.id.TaskCreate);
+        TaskCreate = findViewById(R.id.TaskCreate);
         TaskCreate.setOnEditorActionListener((view, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_SEND) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                 Helpers.HideKeyboard(TaskActivity.this);
-                String titleText = listCreate.getText().toString().trim();
+
+                titleText = TaskCreate.getText().toString().trim();
                 if (titleText.isEmpty()) {
-                    listCreate.setError("please enter title");
+                    TaskCreate.setError("please enter title");
+
                     return false;
                 } else {
                     AddTODOList(titleText);
-                    listCreate.getText().clear();
+//                    TaskCreate.getText().clear();
                 }
             }
             return true;

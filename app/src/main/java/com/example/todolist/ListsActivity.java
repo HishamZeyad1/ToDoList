@@ -33,7 +33,7 @@ public class ListsActivity extends AppCompatActivity {
     TextView logout;
     //    Button addNewList;
     EditText listCreate;
-    ArrayList<TODOList> Lists = new ArrayList<TODOList>();
+    public ArrayList<TODOList> lists = new ArrayList<TODOList>();
     FirebaseAuth mAuth;
     TaskSearchAdapter taskSearchAdapter;
     ListsRecyclerAdapter listsRecyclerAdapter;
@@ -52,17 +52,23 @@ public class ListsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser == null) {
+            Intent intent = new Intent(ListsActivity.this, Login.class);
+            startActivity(intent);
+            finish();
+        }
         uid = currentUser.getUid();
         listsRef = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("lists");
+
 
         lists_rv = findViewById(R.id.lists_rv);
         ListPaddingDecoration dividerItemDecoration = new ListPaddingDecoration(this);
         lists_rv.addItemDecoration(dividerItemDecoration);
         lists_rv = findViewById(R.id.lists_rv);
         lists_rv.setLayoutManager(new LinearLayoutManager(this));
-        listsRecyclerAdapter = new ListsRecyclerAdapter((Activity) ListsActivity.this, Lists);
+        listsRecyclerAdapter = new ListsRecyclerAdapter( ListsActivity.this, lists);
         lists_rv.setAdapter(listsRecyclerAdapter);
 
         listCreate = findViewById(R.id.TaskCreate);
@@ -104,7 +110,7 @@ public class ListsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pc_loading.setVisibility(View.VISIBLE);
-                Lists.clear();
+                lists.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     TODOList todoList = new TODOList();
 
@@ -114,7 +120,7 @@ public class ListsActivity extends AppCompatActivity {
                         for (DataSnapshot tasksSnapshot : snapshot.child("tasks").getChildren()) {
                             todoList.getTasks().add(tasksSnapshot.getValue(TODOTask.class));
                         } }
-                    Lists.add(todoList);
+                    lists.add(todoList);
                 }
                 pc_loading.setVisibility(View.GONE);
                 listsRecyclerAdapter.notifyDataSetChanged();
@@ -136,7 +142,7 @@ public class ListsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pc_loading.setVisibility(View.VISIBLE);
-                Lists.clear();
+                lists.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     TODOList todoList = new TODOList();
@@ -149,7 +155,7 @@ public class ListsActivity extends AppCompatActivity {
                         }
                     }
 
-                    Lists.add(todoList);
+                    lists.add(todoList);
                 }
                 pc_loading.setVisibility(View.GONE);
                 listsRecyclerAdapter.notifyDataSetChanged();
@@ -228,9 +234,9 @@ public class ListsActivity extends AppCompatActivity {
 
     public ArrayList<TODOTaskSearch> search(String text) {
         ArrayList<TODOTaskSearch> result = new ArrayList<TODOTaskSearch>();
-        int listCount = Lists.size();
+        int listCount = lists.size();
         for (int i = 0; i < listCount; i++) {
-            TODOList list = Lists.get(i);
+            TODOList list = lists.get(i);
             int tasksCount = list.getTasks().size();
             for (int j = 0; j < tasksCount; j++) {
                 TODOTask task = list.getTasks().get(j);
